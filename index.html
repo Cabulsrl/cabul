@@ -95,8 +95,19 @@
     }
 
     /* HERO */
-    #hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:var(--negro);}
-    .hero-parallax{position:absolute;inset:-30% 0;background:repeating-linear-gradient(-55deg,transparent,transparent 40px,rgba(200,16,46,0.04) 40px,rgba(200,16,46,0.04) 41px);pointer-events:none;will-change:transform;}
+    #hero{
+      min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;
+      background:var(--negro);
+    }
+    .hero-bg{
+      position:absolute;inset:0;
+      background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80');
+      background-size:cover;background-position:center 40%;
+      opacity:0.35;
+      will-change:transform;
+      transition:opacity 0.5s;
+    }
+    .hero-parallax{position:absolute;inset:-30% 0;pointer-events:none;will-change:transform;}
     #hero::after{content:'';position:absolute;right:0;top:0;bottom:0;width:35%;background:linear-gradient(170deg,var(--rojo) 0%,var(--rojo-oscuro) 100%);clip-path:polygon(25% 0,100% 0,100% 100%,0% 100%);opacity:0.07;pointer-events:none;}
     .hero-content{position:relative;z-index:2;padding:120px 7% 80px;max-width:700px;}
     .hero-eyebrow{display:inline-flex;align-items:center;gap:0.7rem;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:var(--rojo);margin-bottom:1.6rem;}
@@ -129,7 +140,21 @@
     .section-desc{color:#555555;font-weight:300;font-size:1.05rem;line-height:1.8;max-width:520px;margin-bottom:3rem;letter-spacing:0.01em;}
 
     /* SERVICIOS */
-    #servicios{padding:80px 5% 100px;background:var(--fondo);position:relative;}
+    #servicios{
+      padding:80px 5% 100px;
+      background:var(--fondo);
+      position:relative;
+    }
+    #servicios::after{
+      content:'';
+      position:absolute;inset:0;
+      background-image:url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1920&q=80');
+      background-size:cover;background-position:center;
+      opacity:0.04;
+      pointer-events:none;
+      z-index:0;
+    }
+    #servicios > *{position:relative;z-index:1;}
     .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
     .service-card{background:var(--blanco);padding:2.5rem 2rem;border:1px solid var(--gris-claro);position:relative;overflow:hidden;opacity:0;transform:translateY(40px);transition:opacity 0.6s ease,transform 0.6s ease,box-shadow 0.3s;}
     .service-card.visible{opacity:1;transform:translateY(0);}
@@ -152,6 +177,14 @@
         var(--blanco);
       display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;
       isolation:isolate;
+    }
+    .nosotros-bg{
+      position:absolute;inset:0;
+      background-image:url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=1200&q=80');
+      background-size:cover;background-position:center;
+      opacity:0.03;
+      pointer-events:none;
+      z-index:0;
     }
     #nosotros::before{
       content:'CABUL';
@@ -193,7 +226,20 @@
     }
 
     /* COBERTURA */
-    #cobertura{padding:60px 5% 120px;background:var(--negro);text-align:center;position:relative;overflow:visible;}
+    #cobertura{
+      padding:60px 5% 120px;
+      background:var(--negro);
+      text-align:center;position:relative;overflow:visible;
+    }
+    .cobertura-bg{
+      position:absolute;inset:0;
+      background-image:url('https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=1920&q=80');
+      background-size:cover;background-position:center 30%;
+      opacity:0.12;
+      pointer-events:none;
+      z-index:0;
+    }
+    #cobertura > *:not(.sep-top){position:relative;z-index:1;}
     #cobertura>.sep-top{display:block;line-height:0;position:absolute;top:-55px;left:0;width:100%;pointer-events:none;}
     #cobertura::before{content:'ARGENTINA';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,15vw,14rem);color:rgba(255,255,255,0.03);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;}
     #cobertura .section-label{justify-content:center;color:rgba(255,255,255,0.5);}
@@ -308,7 +354,7 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-parallax" id="hero-parallax"></div>
+    <div class="hero-bg" id="hero-parallax"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">Transporte agropecuario · Santa Fe, Argentina</div>
       <h1 class="hero-title">Uniendo<br><span style="white-space:nowrap;">el <span class="red" id="typewriter"></span><span class="cursor-blink">|</span></span></h1>
@@ -425,6 +471,7 @@
     <svg style="position:absolute;top:-31px;left:0;width:100%;height:32px;display:block;pointer-events:none;" viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="0,32 1440,0 1440,32" fill="#FFFFFF"/>
     </svg>
+    <div class="nosotros-bg"></div>
     <div class="nosotros-visual fade-up">
       <div class="stats-grid">
         <div class="stat-cell stat-dark">
@@ -477,6 +524,7 @@
 
   <!-- COBERTURA -->
   <section id="cobertura">
+    <div class="cobertura-bg"></div>
     <svg class="sep-top" viewBox="0 0 1440 56" preserveAspectRatio="none" style="height:56px;" xmlns="http://www.w3.org/2000/svg">
       <polygon points="0,0 1440,56 0,56" fill="#FFFFFF"/>
     </svg>
